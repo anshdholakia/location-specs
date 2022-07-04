@@ -1,6 +1,23 @@
-button {
-  height: 30px;
-  width: 30px;
+*{
+  margin:0;
+  padding:0;
+}
+
+.options{
+  border:none;
+  padding: 7px 7px;
+  background-color: white;
+  
+
+}
+
+.options:hover{
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+div#changeColor {
+  height: 200px;
+  width: 300px;
   outline: none;
   margin: 10px;
   border: none;

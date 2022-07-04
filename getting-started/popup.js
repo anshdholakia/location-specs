@@ -15,10 +15,15 @@ changeColor.addEventListener("click", async () => {
   });
 });
 
-// The body of this function will be execuetd as a content script inside the
+// The body of this function will be executed as a content script inside the
 // current page
 function setPageBackgroundColor() {
+  
   chrome.storage.sync.get("color", ({ color }) => {
     document.body.style.backgroundColor = color;
   });
 }
+
+chrome.windows.getCurrent((e)=>{
+  console.log(e);
+});

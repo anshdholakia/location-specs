@@ -11,6 +11,13 @@
 
 }
 
+
+#menu{
+  display:flex;
+  flex-direction: row;
+  
+}
+
 .options:hover{
   background-color: whitesmoke;
   cursor: pointer;

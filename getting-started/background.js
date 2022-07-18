@@ -6,20 +6,10 @@ try{
     if(tab.url && tab.url.includes("google.com/maps/place") && !tab.url.split("/place/")[1].split("/")[0].includes(queryparams)){
       queryparams = tab.url.split("/place/")[1].split("/")[0];
       // console.log(queryparams);
-      chrome.tabs.sendMessage(tabId, {
-        type: "NEW",
-        location: queryparams,
-        tabd: tabId
-
-      });
+      chrome.tabs.sendMessage(tabId, {type: "NEW", location: queryparams})
     }
   })
 
-  // on just a reload
-  chrome.tabs.reload((tabId, tab)=>{
-    
-  })
-  
 }catch(Error){
   console.log(Error);
 }

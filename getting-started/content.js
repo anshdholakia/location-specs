@@ -1,36 +1,39 @@
-let reloadFunction = ;
+import "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+
+
 (()=>{
     let currentLocation = "";
+
+    async function getCurrentTab(){
+        await chrome.tabs.query({active: true, lastFocusedWindow: true}, (tab)=>{
+            console.log(tab);
+        });
+        // return tab;
+    }
+    
     chrome.runtime.onMessage.addListener((obj, sender, reponse)=>{
-        const{type, location, tabd} = obj;
+        const{type, location} = obj;
         currentLocation = location;
         if(type=="NEW" && !location.includes("%")){
             currentLocation = location;
-            newLocationloaded(currentLocation, tabd);
+            newLocationloaded(currentLocation);
+            console.log(location);
         }
 
-        reloadFunction = ()=>{
-            chrome.tabs.sendMessage(tabd, {
-                type: "RELOAD",
-                loc: null
-            })        
-        }
         
     })
 
 
-    const newLocationloaded = async (location, tabid) =>{
-        // Store it in chrome storage
-        chrome.storage.sync.set({loc: location})
-        chrome.tabs.sendMessage(tabid, {
-            type: "LOCATION",
-            loc: location
-        })
-        // console.log(location);
+    const newLocationloaded = (location) =>{
+        // Make arrow
+        let arrow = document.createElement('div');
 
     }
 
-    reloadFunction();
+    // getCurrentTab();
+
 
 
 })();
+
+

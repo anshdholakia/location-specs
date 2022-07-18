@@ -2,11 +2,11 @@
   "name": "Website Specs",
   "description": "Analyzes URLS, Images, and Videos on website",
   "version": "0.1.0",
-  "host_permissions":["https://*.youtube.com/*"],
+  "host_permissions":["https://*.google.com/maps/*"],
   "manifest_version": 3,
   "content_scripts": [
     {
-      "matches": ["https://*.youtube.com/*"],
+      "matches": ["https://*.google.com/maps/*"],
       "js": ["content.js"]
     }
   ],

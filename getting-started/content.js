@@ -31,7 +31,7 @@
 
     const addElements = (array)=>{
         if(array.length === 0){
-            document.getElementById("detail").innerHTML = `<h1 style="margin: 50% 0%;  text-align: center;">Nothing interesting here</h1>`
+            document.getElementById("detail").innerHTML = `<h1 tabindex="-1" style="margin: 50% 0%;  text-align: center;">Nothing interesting here</h1>`
             return;
         }
         for (let i = 0; i < array.length; i++) {
@@ -48,6 +48,8 @@
             font-size: 70%;
             background: #d6d5d5;
             color: black;`;
+            new_title.tabIndex = "-1";
+            new_title.target = "_blank";
             document.getElementById("detail").appendChild(new_title);
 
             
@@ -72,6 +74,7 @@
         transform: translateX(260px);`
         details.style = `height: 270px;
         width: 260px;
+        border: solid black 2px;
         background-color: white;
         display: table-column;  
         justify-content: center;
@@ -82,11 +85,12 @@
         z-index: 9;`;
         details.tabIndex = "-1";
         arrow.innerHTML = `<`;
-        details.innerHTML= `<h1 style="margin: 50% 0%;  text-align: center;">Click on a location</h1>`
+        details.innerHTML= `<h1 tabindex="-1" style="margin: 50% 0%;  text-align: center;">Click on a location</h1>`
         arrow.style = `height: 39px;
         display: flex;
         cursor:pointer;
         justify-content: center;
+        border-right: none !important;
         border: solid black 2px;
         align-items: center;
         font-weight: 900;
@@ -98,17 +102,22 @@
         main.appendChild(details);
         document.body.appendChild(main);
 
+        let count = 0;
+
         arrow.addEventListener('click', (e) => {
-            main.style.transform = "translateX(0px)";
-            details.focus();
-            arrow.innerText = '>';
+            if (count==0){
+                main.style.transform = "translateX(0px)";
+                arrow.innerText = '>';
+                count+=1;
+            }
+            else{
+                arrow.innerText = '<';
+                main.style.transform = "translateX(260px)"; //
+                count-=1;
+            }
+            
 
           });
-
-        details.addEventListener('blur', (e)=>{
-            arrow.innerText = '<';
-            main.style.transform = "translateX(260px)"; //
-        })
     }
 
     makeArrow();

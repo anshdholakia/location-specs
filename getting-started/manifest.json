@@ -1,6 +1,6 @@
 {
-  "name": "Website Specs",
-  "description": "Analyzes URLS, Images, and Videos on website",
+  "name": "Location Specs",
+  "description": "Fetches News related to a location on Google Maps",
   "version": "0.1.0",
   "host_permissions":["https://*.google.com/maps/*"],
   "manifest_version": 3,
